@@ -49,12 +49,12 @@ Everything lives in `assets/css/style.css`, and the whole palette is controlled 
 
 ```css
 :root{
-  --navy:      #0F1B2E;   /* main background */
-  --navy-2:    #152439;   /* card / panel background */
-  --paper:     #F2EFE6;   /* main text color */
+  --bg:        #FFFFFF;   /* main page background */
+  --panel:     #F5F4F0;   /* card / panel background, a shade off white */
+  --ink:       #14181F;   /* main text color (near-black) */
   --red:       #E71F27;   /* brand red, sampled from the logo */
   --red-dim:   #B4141B;   /* darker red, used on hover */
-  --steel:     #8C97A6;   /* muted secondary text */
+  --steel:     #4B5563;   /* muted secondary text */
 }
 ```
 
@@ -76,6 +76,6 @@ Until that's done, the form still works — submitting it opens the visitor's em
 
 ## Logo files
 
-- `assets/img/logo.png` — transparent background, used in the nav and footer (both sit on the dark navy background).
+- `assets/img/logo.png` — transparent background, used in the nav and footer (both sit on the white page background).
 - `assets/img/logo-on-white.png` — the same mark on a white background, kept in case you need it for print or a light-background use elsewhere.
 - `assets/img/favicon-*.png` — the "R" mark cropped out of the logo, sized for browser tabs and mobile home-screen icons.
