@@ -44,6 +44,10 @@ h1,h2,h3,.disp{
 a{ color:inherit; }
 img{ max-width:100%; display:block; }
 
+/* Utility: wrap any word or phrase in <span class="accent">...</span>
+   to make it brand red — works anywhere in the page, not just headings. */
+.accent{ color:var(--red); }
+
 .wrap{ max-width:var(--max-width); margin:0 auto; padding:0 28px; }
 
 /* subtle blueprint grid, used behind the hero — reads like graph paper on white */
