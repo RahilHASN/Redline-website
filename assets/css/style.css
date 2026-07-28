@@ -143,7 +143,7 @@ nav a:hover{ color:var(--ink); }
 }
 .sheet-header .rev{ color:var(--red); }
 .sheet{ position:relative; padding:40px 22px 50px; }
-.sheet svg{ display:block; width:100%; height:auto; }
+.sheet-photo{ display:block; width:100%; height:auto; border:1px solid var(--line); }
 .redline-note{
   position:absolute;
   font-family:'IBM Plex Mono', monospace;
