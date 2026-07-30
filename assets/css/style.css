@@ -9,6 +9,7 @@
 :root{
   /* Brand colors — --red is sampled directly from the logo file */
   --bg:        #FFFFFF;   /* main page background */
+  --bg-soft:   rgba(255,255,255,0.92); /* translucent version, used on the sticky header */
   --panel:     #F5F4F0;   /* card / panel background, a shade off white */
   --ink:       #14181F;   /* main text color (near-black) */
   --red:       #E71F27;   /* brand red, from the Redline mark */
@@ -18,6 +19,21 @@
 
   --max-width: 1180px;
   --section-padding: 90px;
+}
+
+/* Dark theme — toggled by adding data-theme="dark" to <html> (see script.js).
+   Only the tones below change; --red stays identical in both themes. */
+html[data-theme="dark"]{
+  --bg:      #0B0E13;
+  --bg-soft: rgba(11,14,19,0.92);
+  --panel:   #161B24;
+  --ink:     #F2F3F5;
+  --steel:   #9AA4B2;
+  --line:    rgba(255,255,255,0.12);
+}
+
+body, header, .service-card, .industry-card, .pillar, .code-chip{
+  transition:background-color .25s ease, border-color .25s ease, color .25s ease;
 }
 
 *{ box-sizing:border-box; }
@@ -70,7 +86,7 @@ img{ max-width:100%; display:block; }
 /* ---------- NAV ---------- */
 header{
   position:sticky; top:0; z-index:50;
-  background:rgba(255,255,255,0.92);
+  background:var(--bg-soft);
   backdrop-filter:blur(6px);
   border-bottom:1px solid var(--line);
 }
@@ -78,6 +94,9 @@ nav{ display:flex; align-items:center; justify-content:space-between; padding:14
 
 .brand{ display:flex; align-items:center; gap:12px; text-decoration:none; }
 .brand img{ height:40px; width:auto; }
+.brand .logo-dark{ display:none; }
+html[data-theme="dark"] .brand .logo-light{ display:none; }
+html[data-theme="dark"] .brand .logo-dark{ display:block; }
 .brand-fallback{
   font-family:'Barlow Condensed', sans-serif; font-weight:700;
   font-size:1.25rem; letter-spacing:0.02em; text-transform:uppercase;
@@ -87,6 +106,8 @@ nav ul{ list-style:none; display:flex; gap:32px; margin:0; padding:0; }
 nav a{ text-decoration:none; font-size:0.92rem; color:var(--steel); transition:color .2s; }
 nav a:hover{ color:var(--ink); }
 .nav-links{ display:flex; align-items:center; gap:32px; }
+.nav-end{ display:flex; align-items:center; gap:28px; }
+.nav-icons{ display:flex; align-items:center; gap:10px; }
 
 .btn{
   display:inline-block;
@@ -106,6 +127,20 @@ nav a:hover{ color:var(--ink); }
 .btn-outline:hover{ border-color:var(--ink); background:transparent; }
 
 .menu-toggle{ display:none; background:none; border:none; color:var(--ink); font-size:1.6rem; cursor:pointer; }
+
+.theme-toggle{
+  display:flex; align-items:center; justify-content:center;
+  width:38px; height:38px;
+  background:none; border:1px solid var(--line); border-radius:50%;
+  color:var(--ink); cursor:pointer; padding:0;
+  transition:border-color .2s, background .2s;
+}
+.theme-toggle:hover{ border-color:var(--red); }
+.theme-toggle svg{ width:19px; height:19px; }
+.theme-toggle .icon-sun{ display:none; }
+.theme-toggle .icon-moon{ display:block; }
+html[data-theme="dark"] .theme-toggle .icon-sun{ display:block; }
+html[data-theme="dark"] .theme-toggle .icon-moon{ display:none; }
 
 /* ---------- HERO ---------- */
 .hero{ position:relative; padding:90px 0 80px; overflow:hidden; }
@@ -144,27 +179,6 @@ nav a:hover{ color:var(--ink); }
 .sheet-header .rev{ color:var(--red); }
 .sheet{ position:relative; padding:40px 22px 50px; }
 .sheet-photo{ display:block; width:100%; height:auto; border:1px solid var(--line); }
-.redline-note{
-  position:absolute;
-  font-family:'IBM Plex Mono', monospace;
-  color:var(--red);
-  font-size:0.78rem;
-  line-height:1.4;
-  max-width:190px;
-  transform:rotate(-1.2deg);
-}
-.redline-note::before{ content:'▸ '; }
-.note-1{ top:16px; right:6%; }
-.note-2{ bottom:8%; left:4%; text-align:left; }
-.note-3{ top:42%; right:2%; }
-
-@media (max-width:720px){
-  .redline-note{ position:static; max-width:100%; transform:none; margin-top:10px; }
-  .sheet-notes-mobile{ display:flex; flex-direction:column; gap:6px; padding:0 22px 26px; }
-}
-.sheet-notes-desktop{ display:block; }
-@media (max-width:720px){ .sheet-notes-desktop{ display:none; } }
-@media (min-width:721px){ .sheet-notes-mobile{ display:none; } }
 
 /* ---------- SECTION SHARED ---------- */
 section{ padding:var(--section-padding) 0; border-top:1px solid var(--line); }
@@ -206,14 +220,8 @@ section{ padding:var(--section-padding) 0; border-top:1px solid var(--line); }
 .industry-img img{ width:100%; height:100%; object-fit:cover; display:block; transition:transform .3s ease; }
 .industry-card:hover .industry-img img{ transform:scale(1.04); }
 .industry-card h3,
-.industry-card p{ padding-left:24px; padding-right:24px; }
+.industry-card p{ padding-left:24px; padding-right:24px; text-decoration:none; }
 .industry-card h3{ font-size:1.1rem; margin-bottom:10px; color:var(--ink); }
-.card-link{
-  display:block; padding:14px 24px 0; margin-top:14px;
-  font-family:'IBM Plex Mono', monospace; font-size:0.78rem;
-  color:var(--red); text-transform:uppercase; letter-spacing:0.03em;
-  border-top:1px solid var(--line);
-}
 .industry-card p{ color:var(--steel); font-size:0.86rem; line-height:1.5; margin:0; }
 @media (max-width:900px){ .industries-grid{ grid-template-columns:1fr 1fr; } }
 @media (max-width:560px){ .industries-grid{ grid-template-columns:1fr; } }
@@ -265,6 +273,9 @@ footer{ border-top:1px solid var(--line); padding:34px 0; }
 footer .wrap{ display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:16px; }
 .footer-brand{ display:flex; align-items:center; gap:10px; }
 .footer-brand img{ height:28px; width:auto; }
+.footer-brand .logo-dark{ display:none; }
+html[data-theme="dark"] .footer-brand .logo-light{ display:none; }
+html[data-theme="dark"] .footer-brand .logo-dark{ display:block; }
 .footer-brand span{ font-family:'Barlow Condensed', sans-serif; font-weight:700; text-transform:uppercase; font-size:0.95rem; letter-spacing:0.02em; }
 footer .mono{ color:var(--steel); font-size:0.8rem; }
 .footer-links{ display:flex; gap:20px; }
