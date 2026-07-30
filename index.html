@@ -14,6 +14,16 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="assets/css/style.css">
+<script>
+  // Runs before first paint so a returning dark-theme visitor never sees
+  // a flash of the light theme. The rest of the theme logic (the toggle
+  // button, logo swap) lives in assets/js/script.js.
+  try {
+    if (localStorage.getItem('redline-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) { /* storage unavailable — falls back to light theme */ }
+</script>
 </head>
 <body>
 
@@ -22,18 +32,27 @@
   <div class="wrap">
     <nav>
       <a href="#top" class="brand">
-        <img src="assets/img/logo.png" alt="Redline Fire Protection Engineering">
+        <img class="logo-light" src="assets/img/logo.png" alt="Redline Fire Protection Engineering">
+        <img class="logo-dark" src="assets/img/dark/logo-dark-wide.png" alt="Redline Fire Protection Engineering">
       </a>
-      <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
-      <div class="nav-links" id="navLinks">
-        <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#industries">Industries</a></li>
-          <li><a href="#process">Process</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
-        <a href="#contact" class="btn" style="margin-left:24px;">Request a proposal</a>
+      <div class="nav-end">
+        <div class="nav-links" id="navLinks">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <a href="#contact" class="btn" style="margin-left:24px;">Request a proposal</a>
+        </div>
+        <div class="nav-icons">
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 1110 3.2a7 7 0 0010.5 11.3z"/></svg>
+          </button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+        </div>
       </div>
     </nav>
   </div>
@@ -60,17 +79,6 @@
           <source src="assets/img/hero/blueprint.mp4" type="video/mp4">
           <source src="assets/img/hero/blueprint.webm" type="video/webm">
         </video>
-
-        <div class="sheet-notes-desktop">
-          <div class="redline-note note-1">spacing exceeds 15'-0" —<br>relocate per NFPA 13 §8.6</div>
-          <div class="redline-note note-3">confirm hazard<br>classification, area 2</div>
-          <div class="redline-note note-2">add flow switch,<br>verify per NFPA 72</div>
-        </div>
-      </div>
-      <div class="sheet-notes-mobile">
-        <div class="redline-note">spacing exceeds 15'-0" — relocate per NFPA 13 §8.6</div>
-        <div class="redline-note">confirm hazard classification, area 2</div>
-        <div class="redline-note">add flow switch, verify per NFPA 72</div>
       </div>
     </div>
   </div>
@@ -187,25 +195,21 @@
         <div class="industry-img"><img src="assets/img/industries/commercial.jpg" alt="Commercial buildings" loading="lazy"></div>
         <h3>Commercial Buildings</h3>
         <p>Sprinkler and hydrant system design for office buildings, retail spaces, and multi-storey commercial developments — from low-rise to high-rise.</p>
-        <span class="card-link">View project examples ↗</span>
       </a>
       <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
         <div class="industry-img"><img src="assets/img/industries/warehousing.jpg" alt="Warehousing and logistics" loading="lazy"></div>
         <h3>Warehousing &amp; Logistics</h3>
         <p>Sprinkler and hydrant coverage designed for large-footprint storage facilities, accounting for storage height and commodity classification.</p>
-        <span class="card-link">View project examples ↗</span>
       </a>
       <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
         <div class="industry-img"><img src="assets/img/industries/data-center.jpg" alt="Data centers and clean rooms" loading="lazy"></div>
         <h3>Data Centers &amp; Clean Room</h3>
         <p>Clean-agent gas suppression system design (CO2/FM200) for server rooms, electrical panel rooms, and other sensitive, high-value occupancies.</p>
-        <span class="card-link">View project examples ↗</span>
       </a>
       <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
         <div class="industry-img"><img src="assets/img/industries/industrial.jpg" alt="Industrial and process facilities" loading="lazy"></div>
         <h3>Industrial &amp; Process Facilities</h3>
         <p>Design for manufacturing units, factories, and process plants — including refinery-grade hydrant networks and deluge/foam systems suited to high-hazard industrial classifications.</p>
-        <span class="card-link">View project examples ↗</span>
       </a>
     </div>
   </div>
@@ -323,7 +327,8 @@
 <footer>
   <div class="wrap">
     <div class="footer-brand">
-      <img src="assets/img/logo.png" alt="Redline Fire Protection Engineering" style="height:32px;">
+      <img class="logo-light" src="assets/img/logo.png" alt="Redline Fire Protection Engineering" style="height:32px;">
+      <img class="logo-dark" src="assets/img/dark/logo-dark-wide.png" alt="Redline Fire Protection Engineering" style="height:32px;">
     </div>
     <div class="footer-links">
       <a href="#about">About</a>
