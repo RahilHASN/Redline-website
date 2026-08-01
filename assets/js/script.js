@@ -1,13 +1,12 @@
 // =============================================================================
 // REDLINE FIRE PROTECTION ENGINEERING — site scripts
 // -----------------------------------------------------------------------------
-// Six small, independent pieces:
+// Five small, independent pieces:
 //   1. Mobile menu toggle
 //   2. Light/dark theme toggle
 //   3. Scroll-reveal animation for sections
 //   4. Contact form handling (Formspree, with a mailto fallback)
 //   5. Meeting booking dialog (separate Formspree submission)
-//   6. 3D model auto-tumble (rotates in all directions, not just side to side)
 // =============================================================================
 
 // ---- 1. Mobile menu -----------------------------------------------------
@@ -164,50 +163,6 @@ if (form) {
       btn.textContent = originalLabel;
     }
   });
-})();
-
-// ---- 6. 3D model auto-tumble ------------------------------------------------
-// model-viewer's built-in auto-rotate only spins side to side (one axis).
-// This drives the camera manually instead, continuously sweeping all the
-// way around horizontally while also slowly rocking up and down between
-// near-top and near-bottom views, so the model tumbles in every direction
-// rather than just spinning like a record. Pauses while the visitor is
-// actively dragging/zooming, and resumes a couple of seconds after they
-// let go — matching how auto-rotate normally behaves.
-(() => {
-  const mv = document.getElementById('modelViewer');
-  if (!mv) return;
-
-  let theta = 35;      // azimuthal angle (degrees) — matches the initial camera-orbit
-  let phi = 70;         // polar angle (degrees)
-  let phiDirection = 1; // ping-pongs between the near-top and near-bottom limits
-  const PHI_MIN = 15;
-  const PHI_MAX = 165;
-  const THETA_SPEED = 0.12;  // degrees per frame
-  const PHI_SPEED = 0.05;    // slower, so it reads as a gentle roll rather than a spin
-
-  let userInteracting = false;
-  let resumeTimer = null;
-
-  mv.addEventListener('camera-change', (e) => {
-    if (e.detail && e.detail.source === 'user-interaction') {
-      userInteracting = true;
-      clearTimeout(resumeTimer);
-      resumeTimer = setTimeout(() => { userInteracting = false; }, 2200);
-    }
-  });
-
-  function tick() {
-    if (!userInteracting) {
-      theta = (theta + THETA_SPEED) % 360;
-      phi += PHI_SPEED * phiDirection;
-      if (phi >= PHI_MAX) { phi = PHI_MAX; phiDirection = -1; }
-      if (phi <= PHI_MIN) { phi = PHI_MIN; phiDirection = 1; }
-      mv.cameraOrbit = `${theta}deg ${phi}deg auto`;
-    }
-    requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
 })();
 
 // ---- Footer year ----------------------------------------------------------
