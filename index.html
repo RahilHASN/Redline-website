@@ -100,6 +100,15 @@
         <span class="rev">DRAG TO ROTATE · SCROLL TO ZOOM</span>
       </div>
       <div class="sheet model-sheet">
+        <!--
+          ORIENTATION FIX for models exported from Revit (or other Z-up
+          CAD tools): Revit's coordinate system treats Z as "up", but
+          glTF/GLB (this viewer's format) expects Y as "up". If your
+          model loads tipped on its side or facing the wrong way, that
+          mismatch is almost always why — see README.md ("Fixing a
+          sideways or rotated model from Revit") for how to dial in the
+          `orientation` attribute below to correct it.
+        -->
         <model-viewer
           class="model-viewer-el"
           src="assets/models/placeholder.glb"
@@ -111,6 +120,7 @@
           shadow-intensity="1"
           exposure="0.9"
           camera-orbit="35deg 70deg auto"
+          orientation="0deg 0deg 0deg"
         >
           <div class="model-loading" slot="poster">Loading 3D model…</div>
         </model-viewer>
