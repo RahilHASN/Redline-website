@@ -110,17 +110,16 @@
           `orientation` attribute below to correct it.
         -->
         <model-viewer
-          id="modelViewer"
           class="model-viewer-el"
           src="assets/models/placeholder.glb"
           alt="Interactive 3D model preview"
           camera-controls
           touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="1500"
           shadow-intensity="1"
           exposure="0.9"
           camera-orbit="35deg 70deg auto"
-          min-camera-orbit="-Infinity 1deg auto"
-          max-camera-orbit="Infinity 179deg auto"
           orientation="0deg 0deg 0deg"
         >
           <div class="model-loading" slot="poster">Loading 3D model…</div>
