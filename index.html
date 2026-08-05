@@ -81,6 +81,11 @@
       (or .gltf) file; most CAD/BIM tools can export one, or you can
       convert an existing model at https://products.aspose.app/3d/conversion
     -->
+    <!--
+      MODEL TITLE — edit this heading whenever you're ready.
+    -->
+    <h3 class="model-heading reveal">Model title goes here</h3>
+
     <div class="sheet-wrap reveal" id="modelSheetReveal">
       <div class="sheet-header">
         <span>3D MODEL PREVIEW</span>
@@ -101,17 +106,17 @@
         >
           <div class="model-loading" slot="poster">Loading 3D model…</div>
         </model-viewer>
-
-        <!--
-          MODEL TITLE / DESCRIPTION — edit the two lines below whenever
-          you're ready. Leave them blank (delete the placeholder text
-          between the tags) if you'd rather show nothing at all.
-        -->
-        <div class="model-info">
-          <h3 class="model-title">Model title goes here</h3>
-          <p class="model-desc">Add a short description of this project — what it is, its scope, or anything you'd like visitors to know.</p>
-        </div>
       </div>
+    </div>
+
+    <!--
+      MODEL DESCRIPTION — edit this whenever you're ready. Leave it
+      blank (delete the text but keep the tags) to show nothing at all.
+    -->
+    <p class="model-desc reveal">Add a short description of this project — what it is, its scope, or anything you'd like visitors to know.</p>
+
+    <div class="model-more reveal">
+      <button type="button" class="btn btn-outline" id="moreProjectsBtn">Explore more projects</button>
     </div>
   </div>
 </section>
@@ -258,19 +263,6 @@
       <p class="section-desc">Four stages, one continuous markup trail from concept to certificate of occupancy.</p>
     </div>
 
-    <div class="sheet-wrap reveal" id="sheetReveal">
-      <div class="sheet-header">
-        <span>DWG NO. RFP-101-A · FIRE SPRINKLER PLAN</span>
-        <span class="rev">REV 03 — REDLINED</span>
-      </div>
-      <div class="sheet">
-        <video class="sheet-photo" poster="assets/img/hero/blueprint.jpg" autoplay muted loop playsinline>
-          <source src="assets/img/hero/blueprint.mp4" type="video/mp4">
-          <source src="assets/img/hero/blueprint.webm" type="video/webm">
-        </video>
-      </div>
-    </div>
-
     <div class="process reveal">
       <div class="process-row">
         <div class="stage">STAGE 01</div>
@@ -386,13 +378,43 @@
     </div>
     <div class="footer-social">
       <!-- More icons can go here later — just add another <a class="social-icon"> block. -->
-      <a class="social-icon" href="https://www.linkedin.com/in/rahil-hasan-descry?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" rel="noopener noreferrer" aria-label="Redline on LinkedIn" title="LinkedIn">
+      <a class="social-icon" href="https://www.linkedin.com/company/redline-fire-protection-engineering/" target="_blank" rel="noopener noreferrer" aria-label="Redline on LinkedIn" title="LinkedIn">
         <img src="assets/img/social/linkedin.png" alt="LinkedIn">
       </a>
     </div>
     <span class="mono">&copy; <span id="year"></span> Redline Fire Protection Engineering.</span>
   </div>
 </footer>
+
+<!-- EXPLORE MORE PROJECTS DIALOG — opens a second 3D model with its own
+     title and description. To add more projects beyond this one, copy
+     this whole <dialog> block, give it a new id, upload another .glb to
+     assets/models/, and add a button that opens it the same way
+     moreProjectsBtn opens this one (see script.js, "Explore more
+     projects dialog"). -->
+<dialog id="moreProjectsDialog" class="meeting-dialog project-dialog">
+  <div class="dialog-head">
+    <h3 class="project-dialog-title">Project title goes here</h3>
+    <button type="button" class="dialog-close" id="closeProjectDialog" aria-label="Close">&times;</button>
+  </div>
+  <div class="project-dialog-body">
+    <model-viewer
+      class="model-viewer-el project-model"
+      src="assets/models/project-2.glb"
+      alt="Interactive 3D model preview"
+      camera-controls
+      touch-action="pan-y"
+      auto-rotate
+      auto-rotate-delay="1500"
+      shadow-intensity="1"
+      exposure="0.9"
+      camera-orbit="35deg 70deg auto"
+    >
+      <div class="model-loading" slot="poster">Loading 3D model…</div>
+    </model-viewer>
+    <p class="model-desc">Add a short description of this second project here.</p>
+  </div>
+</dialog>
 
 <!-- MEETING BOOKING DIALOG — separate from the proposal form above.
      Submits to the same Formspree endpoint but with its own subject line,
