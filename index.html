@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Redline Fire Protection Engineering</title>
+<meta name="description" content="Redline Fire Protection Engineering — fire protection engineering consultants delivering innovative, reliable, and code-compliant sprinkler, hydrant, suppression, and pump system design.">
+
+<!-- Favicon (generated from the Redline mark) -->
+<link rel="icon" href="assets/img/favicon-32.png" sizes="32x32">
+<link rel="icon" href="assets/img/favicon-48.png" sizes="48x48">
+<link rel="apple-touch-icon" href="assets/img/favicon-180.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/style.css">
+
+<!-- <model-viewer> web component — powers the interactive 3D model below the
+     hero video. Loaded from a CDN, so it needs the visitor to be online
+     (same as the Google Fonts above). See README.md for how to swap in
+     your own 3D model. -->
+<script type="module" src="https://cdn.jsdelivr.net/npm/@google/model-viewer@3.5.0/dist/model-viewer.min.js"></script>
+<script>
+  // Runs before first paint so a returning dark-theme visitor never sees
+  // a flash of the light theme. The rest of the theme logic (the toggle
+  // button, logo swap) lives in assets/js/script.js.
+  try {
+    if (localStorage.getItem('redline-theme') === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+    }
+  } catch (e) { /* storage unavailable — falls back to light theme */ }
+</script>
+</head>
+<body>
+
+<!-- ============================== HEADER / NAV ============================== -->
+<header>
+  <div class="wrap">
+    <nav>
+      <a href="#top" class="brand">
+        <img class="logo-light" src="assets/img/logo.png" alt="Redline Fire Protection Engineering">
+        <img class="logo-dark" src="assets/img/dark/logo-dark-wide.png" alt="Redline Fire Protection Engineering">
+      </a>
+      <div class="nav-end">
+        <div class="nav-links" id="navLinks">
+          <ul>
+            <li><a href="#about">About</a></li>
+            <li><a href="#services">Services</a></li>
+            <li><a href="#industries">Industries</a></li>
+            <li><a href="#process">Process</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+          <a href="#contact" class="btn" style="margin-left:24px;">Request a proposal</a>
+        </div>
+        <div class="nav-icons">
+          <button class="theme-toggle" id="themeToggle" aria-label="Switch to dark theme" aria-pressed="false" title="Switch theme">
+            <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v3M12 19v3M4.2 4.2l2.1 2.1M17.7 17.7l2.1 2.1M2 12h3M19 12h3M4.2 19.8l2.1-2.1M17.7 6.3l2.1-2.1"/></svg>
+            <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><path d="M20.5 14.5A8.5 8.5 0 1110 3.2a7 7 0 0010.5 11.3z"/></svg>
+          </button>
+          <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu" aria-expanded="false">&#9776;</button>
+        </div>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<!-- ================================== HERO ================================== -->
+<section class="hero blueprint-bg" id="top">
+  <div class="wrap">
+    <div class="eyebrow">Fire Protection Engineering Consultants</div>
+    <h1 class="reveal in">Engineered<br>for <span>safety</span>.</h1>
+    <p class="lede">We are fire protection engineering consultants committed to delivering innovative, reliable, and code-compliant solutions across industries — protecting what matters most, one calculation at a time.</p>
+    <div class="hero-cta">
+      <a href="#contact" class="btn">Start a project</a>
+      <a href="#services" class="btn btn-outline">See our services</a>
+    </div>
+
+    <!--
+      3D MODEL VIEWER — see README.md ("Replacing the 3D model") for how
+      to swap the placeholder cube for your own model. It needs a .glb
+      (or .gltf) file; most CAD/BIM tools can export one, or you can
+      convert an existing model at https://products.aspose.app/3d/conversion
+    -->
+    <!--
+      MODEL TITLE — edit this heading whenever you're ready.
+    -->
+    <h3 class="model-heading reveal">Model title goes here</h3>
+
+    <div class="sheet-wrap reveal" id="modelSheetReveal">
+      <div class="sheet-header">
+        <span>3D MODEL PREVIEW</span>
+        <span class="rev">DRAG TO ROTATE · SCROLL TO ZOOM</span>
+      </div>
+      <div class="sheet model-sheet">
+        <model-viewer
+          class="model-viewer-el"
+          src="assets/models/placeholder.glb"
+          alt="Interactive 3D model preview"
+          camera-controls
+          touch-action="pan-y"
+          auto-rotate
+          auto-rotate-delay="1500"
+          shadow-intensity="1"
+          exposure="0.9"
+          camera-orbit="35deg 70deg auto"
+        >
+          <div class="model-loading" slot="poster">Loading 3D model…</div>
+        </model-viewer>
+      </div>
+    </div>
+
+    <!--
+      MODEL DESCRIPTION — edit this whenever you're ready. Leave it
+      blank (delete the text but keep the tags) to show nothing at all.
+    -->
+    <p class="model-desc reveal">Add a short description of this project — what it is, its scope, or anything you'd like visitors to know.</p>
+
+    <div class="model-more reveal">
+      <button type="button" class="btn btn-outline" id="moreProjectsBtn">Explore more projects</button>
+    </div>
+  </div>
+</section>
+
+<!-- ================================== ABOUT ================================== -->
+<section id="about">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">About Us</div>
+        <h2>Protecting what<br>matters <span class="accent">most.</span></h2>
+      </div>
+    </div>
+    <div class="about-grid">
+      <div class="about-copy reveal">
+        <p>We are fire protection engineering consultants committed to delivering innovative, reliable, and code-compliant solutions across industries.</p>
+        <p>Every drawing we issue has been calculated, cross-checked, and marked up before it ever reaches an inspector's desk — because a fire protection system only gets one chance to work.</p>
+      </div>
+      <div class="pillars reveal">
+        <div class="pillar">
+          <span class="num">01</span>
+          <h3>Precision Engineering</h3>
+          <p>Every element is calculated and cross-checked.</p>
+        </div>
+        <div class="pillar">
+          <span class="num">02</span>
+          <h3>Hydraulically Rigorous</h3>
+          <p>Every calculation is worked through with the same precision.</p>
+        </div>
+        <div class="pillar">
+          <span class="num">03</span>
+          <h3>EPC-Grade Discipline</h3>
+          <p>Backed by 5+ years of EPC and oil &amp; gas piping design experience.</p>
+        </div>
+        <div class="pillar">
+          <span class="num">04</span>
+          <h3>Code Compliant</h3>
+          <p>Designed to meet applicable fire safety codes and standards, every time.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================= SERVICES ================================= -->
+<section id="services">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">Services</div>
+        <h2>End-to-end fire<br>protection <span class="accent">solutions.</span></h2>
+      </div>
+      <p class="section-desc">Comprehensive solutions tailored to meet the unique requirements of every project.</p>
+    </div>
+    <div class="services-grid reveal">
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/sprinkler.jpg" alt="Fire sprinkler system design" loading="lazy"></div>
+        <span class="tag">SPRINKLER</span>
+        <h3>Fire Sprinkler Systems</h3>
+        <p>Design and cost estimation for wet, dry, pre-action, and deluge sprinkler systems.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/hydrant.jpg" alt="Fire hydrant and hose system design" loading="lazy"></div>
+        <span class="tag">MANUAL FIREFIGHTING</span>
+        <h3>Fire Hydrant &amp; Hose Systems</h3>
+        <p>Design of fire hydrant networks, hose reel systems, and landing valves for reliable manual firefighting coverage.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/suppression.jpg" alt="Gas-based fire suppression system" loading="lazy"></div>
+        <span class="tag">SPECIAL HAZARDS</span>
+        <h3>Gas-Based Fire Suppression</h3>
+        <p>Clean-agent suppression systems including CO2 and FM200, suited for server rooms, electrical panels, and other sensitive occupancies.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/design.jpg" alt="Fire protection design and engineering" loading="lazy"></div>
+        <span class="tag">DESIGN PACKAGES</span>
+        <h3>Design &amp; Engineering</h3>
+        <p>Design packages built to NFPA and National Building Code requirements.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/pump-room.jpg" alt="Fire pump room design" loading="lazy"></div>
+        <span class="tag">PUMP SYSTEMS</span>
+        <h3>Fire Pump Room Design</h3>
+        <p>Pump sizing, pump room layout, and system configuration to meet required flow and pressure demands across the network.</p>
+      </div>
+      <div class="service-card">
+        <div class="service-img"><img src="assets/img/services/hydraulic-calcs.jpg" alt="Hydraulic calculations and cost estimation" loading="lazy"></div>
+        <span class="tag">CALCULATIONS</span>
+        <h3>Hydraulic Calculations &amp; Cost Estimation</h3>
+        <p>Standalone hydraulic calculations, BOQ preparation, and cost estimation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================ INDUSTRIES ================================ -->
+<section id="industries">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">Industries We Serve</div>
+        <h2>Every sector,<br>every <span class="accent">system.</span></h2>
+      </div>
+    </div>
+    <!--
+      Each industry card below links out to a Google Drive folder of
+      project examples. Right now they all point to the same shared
+      folder — swap in a dedicated link per industry whenever you have
+      one ready, by changing that card's href.
+    -->
+    <div class="industries-grid reveal">
+      <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="industry-img"><img src="assets/img/industries/commercial.jpg" alt="Commercial buildings" loading="lazy"></div>
+        <h3>Commercial Buildings</h3>
+        <p>Sprinkler and hydrant system design for office buildings, retail spaces, and multi-storey commercial developments — from low-rise to high-rise.</p>
+      </a>
+      <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="industry-img"><img src="assets/img/industries/warehousing.jpg" alt="Warehousing and logistics" loading="lazy"></div>
+        <h3>Warehousing &amp; Logistics</h3>
+        <p>Sprinkler and hydrant coverage designed for large-footprint storage facilities, accounting for storage height and commodity classification.</p>
+      </a>
+      <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="industry-img"><img src="assets/img/industries/data-center.jpg" alt="Data centers and clean rooms" loading="lazy"></div>
+        <h3>Data Centers &amp; Clean Room</h3>
+        <p>Clean-agent gas suppression system design (CO2/FM200) for server rooms, electrical panel rooms, and other sensitive, high-value occupancies.</p>
+      </a>
+      <a class="industry-card" href="https://drive.google.com/drive/folders/1UET2DRSxEgO-9p7Ijs2nFvL5Ag7XdTgu?usp=sharing" target="_blank" rel="noopener noreferrer">
+        <div class="industry-img"><img src="assets/img/industries/industrial.jpg" alt="Industrial and process facilities" loading="lazy"></div>
+        <h3>Industrial &amp; Process Facilities</h3>
+        <p>Design for manufacturing units, factories, and process plants — including refinery-grade hydrant networks and deluge/foam systems suited to high-hazard industrial classifications.</p>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ================================== PROCESS ================================== -->
+<section id="process">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">Process</div>
+        <h2>How a set of drawings gets <span class="accent">built.</span></h2>
+      </div>
+      <p class="section-desc">Four stages, one continuous markup trail from concept to certificate of occupancy.</p>
+    </div>
+
+    <div class="process reveal">
+      <div class="process-row">
+        <div class="stage">STAGE 01</div>
+        <h3>Assess</h3>
+        <p>Site walk, occupancy classification, hazard analysis, and code baseline — before a single line is drawn.</p>
+      </div>
+      <div class="process-row">
+        <div class="stage">STAGE 02</div>
+        <h3>Design</h3>
+        <p>Hydraulic calculations, device layout, and coordination drawings, cross-checked against every applicable code.</p>
+      </div>
+      <div class="process-row">
+        <div class="stage">STAGE 03</div>
+        <h3>Estimate</h3>
+        <p>BOQ preparation and cost estimation, so budget and design move forward together, not one after the other.</p>
+      </div>
+      <div class="process-row">
+        <div class="stage">STAGE 04</div>
+        <h3>Deliver</h3>
+        <p>Final design packages issued to NFPA and National Building Code requirements, ready for permit and construction.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- =================================== CODES =================================== -->
+<section id="codes">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div>
+        <div class="section-num">Standards</div>
+        <h2>Designed to code, by <span class="accent">default.</span></h2>
+      </div>
+      <p class="section-desc">Every project is checked against the current edition adopted by your jurisdiction.</p>
+    </div>
+    <div class="codes-band reveal">
+      <div class="code-chip"><b>NBC 2016</b> — National Building Code of India, Part 4 (Fire &amp; Life Safety)</div>
+      <div class="code-chip"><b>IS 3844</b> — Fire Hydrant Systems, Hose Reels &amp; Landing Valves</div>
+      <div class="code-chip"><b>IS 15105</b> — Fixed Automatic Sprinkler Systems</div>
+      <div class="code-chip"><b>TAC Fire Protection Manual</b> — Tariff Advisory Committee (India)</div>
+      <div class="code-chip"><b>NFPA 13</b> — Sprinkler Systems</div>
+      <div class="code-chip"><b>NFPA 72</b> — Fire Alarm &amp; Signaling</div>
+      <div class="code-chip"><b>NFPA 25</b> — ITM of Water-Based Systems</div>
+      <div class="code-chip"><b>NFPA 20</b> — Fire Pumps</div>
+      <div class="code-chip"><b>IBC</b> — International Building Code</div>
+      <div class="code-chip"><b>IFC</b> — International Fire Code</div>
+    </div>
+  </div>
+</section>
+
+<!-- ================================== CONTACT ================================== -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div class="reveal">
+        <div class="section-num">Contact</div>
+        <h2>Let's build a safer tomorrow, <span class="accent">together.</span></h2>
+        <p>Partner with Redline Fire Protection Engineering for solutions that truly protect what matters most. Send us your project scope, occupancy type, and timeline — we'll follow up with a proposal.</p>
+        <ul class="contact-list">
+          <li><span class="label">Phone</span><a class="val" href="tel:+918618290503">+91 86182 90503</a></li>
+          <li><span class="label">Email</span><a class="val" href="mailto:rahil.hasan.mrh@gmail.com">rahil.hasan.mrh@gmail.com</a></li>
+          <li><span class="label">Location</span><span class="val">Mangaluru, Karnataka, India</span></li>
+        </ul>
+        <button class="btn btn-outline" id="bookMeetingBtn" type="button" style="margin-top:28px;">Book a meeting</button>
+        <p class="form-note" style="margin-top:10px;">Prefer a quick call over a written proposal? Book a time and we'll confirm by email.</p>
+      </div>
+
+      <!--
+        FORM NOTE: GitHub Pages only serves static files — it cannot run a
+        server to receive form submissions. This form currently posts to
+        Formspree (https://formspree.io), a free service made for exactly
+        this. To activate it:
+          1. Create a free account at formspree.io using
+             rahil.hasan.mrh@gmail.com
+          2. Create a new form, and Formspree will give you an endpoint
+             like https://formspree.io/f/xxxxxxxx
+          3. Replace YOUR_FORM_ID below with that ID.
+        Until you do that, the form will still work by opening the
+        visitor's email client instead (see script.js).
+      -->
+      <form class="reveal" id="contactForm" action="https://formspree.io/f/xykrlrqq" method="POST">
+        <div>
+          <label for="name">Name</label><br>
+          <input id="name" name="name" type="text" placeholder="Jane Rivera" required>
+        </div>
+        <div>
+          <label for="email">Email</label><br>
+          <input id="email" name="email" type="email" placeholder="jane@company.com" required>
+        </div>
+        <div>
+          <label for="project">Project details</label><br>
+          <textarea id="project" name="project" placeholder="Occupancy type, square footage, timeline..."></textarea>
+        </div>
+        <button class="btn send-btn" type="submit">Send project details</button>
+        <p class="form-note">Prefer email? Write directly to <a href="mailto:rahil.hasan.mrh@gmail.com" style="color:var(--red);">rahil.hasan.mrh@gmail.com</a>.</p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- ================================== FOOTER ================================== -->
+<footer>
+  <div class="wrap">
+    <div class="footer-brand">
+      <img class="logo-light" src="assets/img/logo.png" alt="Redline Fire Protection Engineering" style="height:32px;">
+      <img class="logo-dark" src="assets/img/dark/logo-dark-wide.png" alt="Redline Fire Protection Engineering" style="height:32px;">
+    </div>
+    <div class="footer-links">
+      <a href="#about">About</a>
+      <a href="#services">Services</a>
+      <a href="#industries">Industries</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-social">
+      <!-- More icons can go here later — just add another <a class="social-icon"> block. -->
+      <a class="social-icon" href="https://www.linkedin.com/company/redline-fire-protection-engineering/" target="_blank" rel="noopener noreferrer" aria-label="Redline on LinkedIn" title="LinkedIn">
+        <img src="assets/img/social/linkedin.png" alt="LinkedIn">
+      </a>
+    </div>
+    <span class="mono">&copy; <span id="year"></span> Redline Fire Protection Engineering.</span>
+  </div>
+</footer>
+
+<!-- EXPLORE MORE PROJECTS DIALOG — opens a second 3D model with its own
+     title and description. To add more projects beyond this one, copy
+     this whole <dialog> block, give it a new id, upload another .glb to
+     assets/models/, and add a button that opens it the same way
+     moreProjectsBtn opens this one (see script.js, "Explore more
+     projects dialog"). -->
+<dialog id="moreProjectsDialog" class="meeting-dialog project-dialog">
+  <div class="dialog-head">
+    <h3 class="project-dialog-title">Project title goes here</h3>
+    <button type="button" class="dialog-close" id="closeProjectDialog" aria-label="Close">&times;</button>
+  </div>
+  <div class="project-dialog-body">
+    <model-viewer
+      class="model-viewer-el project-model"
+      src="assets/models/project-2.glb"
+      alt="Interactive 3D model preview"
+      camera-controls
+      touch-action="pan-y"
+      auto-rotate
+      auto-rotate-delay="1500"
+      shadow-intensity="1"
+      exposure="0.9"
+      camera-orbit="35deg 70deg auto"
+    >
+      <div class="model-loading" slot="poster">Loading 3D model…</div>
+    </model-viewer>
+    <p class="model-desc">Add a short description of this second project here.</p>
+  </div>
+</dialog>
+
+<!-- MEETING BOOKING DIALOG — separate from the proposal form above.
+     Submits to the same Formspree endpoint but with its own subject line,
+     so meeting requests land in your inbox clearly labeled as such. -->
+<dialog id="meetingDialog" class="meeting-dialog">
+  <div class="dialog-head">
+    <h3>Request a meeting</h3>
+    <button type="button" class="dialog-close" id="closeMeetingDialog" aria-label="Close">&times;</button>
+  </div>
+  <form id="meetingForm" action="https://formspree.io/f/xykrlrqq" method="POST">
+    <input type="hidden" name="_subject" value="New meeting request — Redline website">
+    <input type="hidden" name="request_type" value="Meeting request">
+    <div>
+      <label for="meetingName">Name</label><br>
+      <input id="meetingName" name="name" type="text" required>
+    </div>
+    <div>
+      <label for="meetingEmail">Email</label><br>
+      <input id="meetingEmail" name="email" type="email" required>
+    </div>
+    <div>
+      <label for="meetingTime">Preferred date &amp; time</label><br>
+      <input id="meetingTime" name="preferred_time" type="text" placeholder="e.g. 5 Aug, 3:00 PM IST">
+    </div>
+    <div>
+      <label for="meetingNotes">What would you like to discuss?</label><br>
+      <textarea id="meetingNotes" name="notes"></textarea>
+    </div>
+    <button class="btn send-btn" type="submit">Send meeting request</button>
+    <p class="form-note" id="meetingStatus"></p>
+  </form>
+</dialog>
+
+<script src="assets/js/script.js"></script>
+</body>
+</html>
