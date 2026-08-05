@@ -1,12 +1,13 @@
 // =============================================================================
 // REDLINE FIRE PROTECTION ENGINEERING — site scripts
 // -----------------------------------------------------------------------------
-// Five small, independent pieces:
+// Six small, independent pieces:
 //   1. Mobile menu toggle
 //   2. Light/dark theme toggle
 //   3. Scroll-reveal animation for sections
 //   4. Contact form handling (Formspree, with a mailto fallback)
 //   5. Meeting booking dialog (separate Formspree submission)
+//   6. Explore more projects dialog (second 3D model)
 // =============================================================================
 
 // ---- 1. Mobile menu -----------------------------------------------------
@@ -163,6 +164,21 @@ if (form) {
       btn.textContent = originalLabel;
     }
   });
+})();
+
+// ---- 6. Explore more projects dialog --------------------------------------
+// Opens a second 3D model (with its own title/description) in a popup.
+// To add another project beyond this one, copy the whole pattern here:
+// a new <dialog> in index.html, a new button, and a matching block below.
+(() => {
+  const openBtn = document.getElementById('moreProjectsBtn');
+  const dialog = document.getElementById('moreProjectsDialog');
+  const closeBtn = document.getElementById('closeProjectDialog');
+  if (!openBtn || !dialog) return;
+
+  openBtn.addEventListener('click', () => dialog.showModal());
+  if (closeBtn) closeBtn.addEventListener('click', () => dialog.close());
+  dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
 })();
 
 // ---- Footer year ----------------------------------------------------------
